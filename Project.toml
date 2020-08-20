@@ -1,0 +1,17 @@
+name = "UKE"
+uuid = "384c50d4-0126-4b98-92c6-2fca2b7bede1"
+authors = ["Tianbai Xiao <tianbaixiao@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+DiffEqFlux = "aae7a2af-3d4f-5e19-a356-7da93b79d9d0"
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
+Kinetic = "82403725-3cee-4f7c-b214-1ce71af4a797"
+OrdinaryDiffEq = "1dea7af3-3e70-54e6-95c3-0bf5283fa5ed"
+
+[compat]
+DiffEqFlux = "^1.20"
+Flux = "^0.11"
+Kinetic = "^0"
+OrdinaryDiffEq = "^5.42"
+julia = "^1"

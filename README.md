@@ -1,2 +1,2 @@
-# UBE.jl
-A toolbox for creating neural and universal Boltzmann equations
+# UKE.jl
+A toolbox for creating neural and universal differential equations for kinetic theory
