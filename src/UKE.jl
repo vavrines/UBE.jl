@@ -1,9 +1,10 @@
 module UKE
 
-using Kinetic
-using Flux
-using DiffEqFlux
-using OrdinaryDiffEq
+using Reexport
+@reexport using Kinetic
+@reexport using Flux
+@reexport using DiffEqFlux
+@reexport using OrdinaryDiffEq
 
 include("collision.jl")
 include("solver.jl")
