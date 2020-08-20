@@ -2,7 +2,7 @@
 # Collision Term
 # ============================================================
 
-export ube_rhs, ube_rhs!
+export ube_dfdt, ube_dfdt!
 
 
 """
