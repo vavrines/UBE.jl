@@ -15,9 +15,9 @@ function ube_dfdt(f, p, t)
     τ = p[2]
     ann = p[3:end]
 
-    if ann isa FastChain
+    if ann[1] isa FastChain
         df = (M - f) / τ + ann[1](M - f, ann[2])
-    elseif ann isa Chain
+    elseif ann[1] isa Chain
         df = (M - f) / τ + ann[1](M - f)
     end
 
@@ -35,9 +35,9 @@ function ube_dfdt!(df, f, p, t)
     τ = p[2]
     ann = p[3:end]
 
-    if ann isa FastChain
+    if ann[1] isa FastChain
         df .= (M - f) / τ + ann[1](M - f, ann[2])
-    elseif ann isa Chain
+    elseif ann[1] isa Chain
         df .= (M - f) / τ + ann[1](M - f)
     end
 end
