@@ -52,8 +52,8 @@ function step_ube!(fwL, fhL, fbL, w, prim, h, b, fwR, fhR, fbR, u, weights, p; m
     elseif mode == :nn
         df = ube_dfdt([h_old; b_old], ([H_old; B_old], τ_old, ann), dt)
 
-        @. h += df[1:length(h)] * dt
-        @. b += df[length(h)+1:end] *dt
+        @. h += df[1:end÷2] * dt
+        @. b += df[end÷2+1:end] *dt
     end
 
     #--- record residuals ---#
