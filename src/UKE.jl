@@ -5,6 +5,10 @@ using Reexport
 @reexport using Flux
 @reexport using DiffEqFlux
 @reexport using OrdinaryDiffEq
+using Optim
+using FileIO
+using JLD2
+using Plots
 import Tracker
 
 export track, device
