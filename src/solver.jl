@@ -2,9 +2,6 @@
 # Solution Algorithm
 # ============================================================
 
-export step_ube!
-
-
 """
 Collision solver of universal Boltzmann equation
 * u & weights kept in args for multi-dispatch

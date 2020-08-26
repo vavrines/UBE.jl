@@ -2,9 +2,6 @@
 # Collision Term
 # ============================================================
 
-export ube_dfdt, ube_dfdt!
-
-
 """
 Right-hand side of universal Boltzmann equation
 `ube_dfdt(f, p, t)`
