@@ -1,8 +1,9 @@
-"""
-Adapt Zygote and Tracker modes
+# ============================================================
+# Tracker Methods (see TrackerFlux.jl for details)
+# ============================================================
 
-"""
 track(m) = fmap(x -> x isa AbstractArray ? Tracker.param(x) : x, m)
+
 untrack(m) = fmap(Tracker.data, m)
 
 function Flux.Optimise.update!(opt, xs::Tracker.Params, gs)
@@ -10,19 +11,13 @@ function Flux.Optimise.update!(opt, xs::Tracker.Params, gs)
         Flux.Optimise.update!(opt, x, gs[x])
     end
 end
-function Flux.Optimise.update!(opt, x, x̄)
-    Tracker.update!(x, -Flux.Optimise.apply!(opt, Tracker.data(x), Tracker.data(x̄)))
-end
 
-_truncate(x::AbstractArray) = Tracker.data(x)
-_truncate(x::Tuple) = _truncate.(x)
-truncate!(m::Flux.Recur) = (m.state = _truncate(m.state))
-truncate!(m) = foreach(truncate!, Flux.functor(m)[1])
-
-function overload_gradient()
+function tracker_mode()
+    @eval Flux.Optimise.update!(opt, x, x̄) = Tracker.update!(x, -Flux.Optimise.apply!(opt, Tracker.data(x), Tracker.data(x̄)))
     @eval Flux.gradient(f, args...) = Tracker.gradient(f, args...)
 end
 
-function __init__()
-    @eval Flux truncate! = $truncate!
+function zygote_mode()
+    @eval Flux.Optimise.update!(opt, x, x̄) = Flux.Optimise.update!(x, -Flux.Optimise.apply!(opt, x, x̄))
+    @eval Flux.gradient(f, args...) = Flux.Zygote.gradient(f, args...)
 end

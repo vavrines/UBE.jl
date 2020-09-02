@@ -12,7 +12,7 @@ using Plots
 import Tracker
 
 export device
-export track, untrack
+export track, untrack, tracker_mode, zygote_mode
 export vis_train
 export ube_dfdt, ube_dfdt!
 export step_ube!
