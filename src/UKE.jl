@@ -11,12 +11,14 @@ using JLD2
 using Plots
 import Tracker
 
-export track, device
+export device
+export track, untrack
 export vis_train
 export ube_dfdt, ube_dfdt!
 export step_ube!
 
 include("widget.jl")
+include("tracker.jl")
 include("train.jl")
 include("collision.jl")
 include("solver.jl")
